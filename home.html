@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home Page</title>
+  <script src="https://cdn.statically.io/gh/UnseenVoid/load-baby/main/next.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+  <style>
+    /* Define global styles */
+    body {
+      font-family: 'Raleway', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin: 1rem 0;
+      text-align: center;
+    }
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+    /* Define the card container */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+      margin: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    /* Define card styles */
+    .card {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.2s ease-in-out;
+      border-radius: 5px;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    .card-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    /* Define the pop-up styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #f9f9f9;
+      padding: 20px;
+      border: 1px solid #ccc;
+      z-index: 9999;
+    }
+    .popup button {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <load-baby from="/base2"></load-baby>
+  <h1>Welcome</h1>
+  <div class="card-container">
+    <div class="card">
+      <a href="#" class="image-link" data-class="class8">
+        <img class="card-img-top" src="https://i.ibb.co/FnFqLCx/8.png" alt="eight" />
+      </a>
+    </div>
+    <div class="card">
+      <a href="#" class="image-link" data-class="class9">
+        <img class="card-img-top" src="https://i.ibb.co/hHZpPV0/9.png" alt="nine" />
+      </a>
+    </div>
+    <div class="card">
+      <a href="#" class="image-link" data-class="class10">
+        <img class="card-img-top" src="https://i.ibb.co/THhDh1B/10.png" alt="tenth" />
+      </a>
+    </div>
+    <div class="card">
+      <a href="#" class="image-link" data-class="class11">
+        <img class="card-img-top" src="https://i.ibb.co/SQ3pPrY/11.png" alt="elenventh" />
+      </a>
+    </div>
+    <div class="card">
+      <a href="#" class="image-link" data-class="class12">
+        <img class="card-img-top" src="https://i.ibb.co/2kWh3cv/12.png" alt="twelfth" />
+      </a>
+    </div>
+    <div class="card">
+      <a href="https://ncert.nic.in/textbook.php">
+        <img class="card-img-top" src="https://i.ibb.co/n0XSC0p/ncert.png" alt="Books" />
+      </a>
+    </div>
+    <div class="card">
+      <a href="https://schools.aglasem.com/cbse-previous-year-question-papers/">
+        <img class="card-img-top" src="https://i.ibb.co/g42KrtZ/pyq.png" alt="PYQ" />
+      </a>
+    </div>
+  </div>
+
+  <div id="popupContainer" class="popup">
+    <h2 id="popupTitle"></h2>
+    <button id="studyNotesButton">Study Notes</button>
+    <button id="youtubeVideoButton">YouTube Video</button>
+    <button id="closePopupButton">Close</button>
+  </div>
+
+  <script>
+    var imageLinks = document.querySelectorAll(".image-link");
+    var popupContainer = document.getElementById("popupContainer");
+    var popupTitle = document.getElementById("popupTitle");
+    var studyNotesButton = document.getElementById("studyNotesButton");
+    var youtubeVideoButton = document.getElementById("youtubeVideoButton");
+    var closePopupButton = document.getElementById("closePopupButton");
+
+    imageLinks.forEach(function(link) {
+      link.addEventListener("click", function(event) {
+        event.preventDefault();
+        var imageName = this.querySelector("img").alt;
+        var dataClass = this.getAttribute("data-class");
+        popupTitle.textContent = imageName;
+        popupContainer.dataset.class = dataClass;
+        popupContainer.style.display = "block";
+      });
+    });
+
+    studyNotesButton.addEventListener("click", function() {
+      var dataClass = popupContainer.dataset.class;
+      switch (dataClass) {
+        case "class8":
+          window.location.href = "https://www.ncrtsolutions.in/p/class-8.html";
+          break;
+        case "class9":
+          window.location.href = "https://www.ncrtsolutions.in/p/class-9-study-material.html";
+          break;
+        case "class10":
+          window.location.href = "https://www.ncrtsolutions.in/2015/11/class-10-science-cbse-notes-pdf-download.html";
+          break;
+        case "class11":
+          window.location.href = "https://www.ncrtsolutions.in/p/class-11-study-material.html";
+          break;
+        case "class12":
+          window.location.href = "https://www.ncrtsolutions.in/p/class-12-study-material.html";
+          break;
+      }
+    });
+
+    youtubeVideoButton.addEventListener("click", function() {
+      var dataClass = popupContainer.dataset.class;
+      switch (dataClass) {
+        case "class8":
+          window.location.href = "/eight";
+          break;
+        case "class9":
+          window.location.href = "/nine";
+          break;
+        case "class10":
+          window.location.href = "/tenth";
+          break;
+        case "class11":
+          window.location.href = "/eleventh";
+          break;
+        case "class12":
+          window.location.href = "/twelfth";
+          break;
+      }
+    });
+
+    closePopupButton.addEventListener("click", function() {
+      popupContainer.style.display = "none";
+    });
+  </script>
+</body>
+</html>
